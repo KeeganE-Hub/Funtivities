@@ -1,0 +1,15 @@
+.bg{
+    background-color: orange;
+  }
+  /* Color scheme: Oranges. */
+div.tb1 {
+  background-color: orchid;
+  text-align: center;
+}
+div.tb2{
+  background-color: palegreen;
+  text-align: center;
+}
+label.lbl-bg{
+  background-color: palegreen;
+}
