@@ -110,9 +110,18 @@
                 readData();
                 for (let i = 0; i < eventDateArr.length; i++) {
                     if (eventDateArr[i].eventDate == dtdate.format(newDate) && first){
+                        let names = "";
+                        for(let j = 0; j < eventDateArr[i].names.length; j++) {
+                            if(names == "") {
+                                names = eventDateArr[i].names[j];
+                            }
+                            else {
+                                names = names + ", " + eventDateArr[i].names[j];
+                            }
+                        }
                         first = false;
                         str = str + "Title: " + eventDateArr[i].title + "<br>"
-                            + "Participants: " + eventDateArr[i].name + "<br>"
+                            + "Participants: " + names + "<br>"
                             + "Place: " + eventDateArr[i].place + "<br>"
                             + "Time: " + eventDateArr[i].fullEvenDate + "<br>";
                     }
@@ -150,7 +159,7 @@
                     eventDateArr.push({
                         eventDate: theEventDate,
                         fullEvenDate: d.toString(),
-                        name: "Arash",
+                        names: doc.data().participants,
                         place: doc.data().place,
                         title: doc.data().title
                     });
