@@ -1,15 +1,39 @@
 .bg{
-    background-color: orange;
+    background-color: #b9b8c2;
   }
   /* Color scheme: Oranges. */
 div.tb1 {
-  background-color: orchid;
+  background-color: #db7c26;
   text-align: center;
+  border: 10px #b5ca8d;
+  text-decoration-color: #426b69;
 }
-div.tb2{
-  background-color: palegreen;
+div.tb2 {
+  background-color: #db7c26;
   text-align: center;
+  border: 10px #b5ca8d;
+  text-decoration-color: #426b69;
 }
-label.lbl-bg{
-  background-color: palegreen;
+div.run{
+  background-color: #e49f61;
+  text-align: center;
+  width:95vw;
+  height:100vh;
+  z-index: 1;
+
+}
+.center{
+  margin: auto;
+}
+span{
+border: #426b69 2px;
+right:4px;
+white-space: nowrap;
+display: block;
+right: 10vw;
+border: 4px #426b69;
+}
+.formGroup > label{
+  width: 90vw;
+  background-color: #e49f61;
 }

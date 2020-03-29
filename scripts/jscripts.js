@@ -118,6 +118,25 @@ function addEvent() {
                 .catch(function (error) {
                     console.error("Error writing document: ", error);
                 });
+
+//            const userRef = db.collection('users').doc(user.id).collection('userEvents').doc();
+  //          userRef.set({
+    //            name: eventName,
+      //          date: eventDate,
+        //        time: eventTime,
+          //      address: eventAddr,
+//                textBody: eventTxtBdy,
+  //              going: going,
+    //            //creator: user.id,
+      //          eventId: ref.id,
+        //        tag: tag
+          //  })
+//            .then(function () {
+  //              console.log("Document successfully written!");
+    //        })
+      //      .catch(function (error) {
+        //        console.error("Error writing document: ", error);
+//            });
             //})
         })
 
@@ -150,18 +169,10 @@ function tagEvent() {
                 (doc) => {
                     if (doc.exists) {
                         eventTags = doc.data().tag;
-                        console.log(eventTags);
-
-                        console.log(userTags);
                         let tagArray = userTags.match(/\w+|\s+|[^\s\w]+/g);
-                        console.log(tagArray);
-                        let wS = " ";
                         for (let i = 0; i < tagArray.length; i++) {
-                            console.log(tagArray[i])
                             if (/\S/.test(tagArray[i])) {
-                                console.log(tagArray[i]);
                                 eventTags.push(tagArray[i]);
-                                console.log(eventTags);
                             }
                         }
                         console.log(eventTags);
