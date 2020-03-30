@@ -119,24 +119,24 @@ function addEvent() {
                     console.error("Error writing document: ", error);
                 });
 
-//            const userRef = db.collection('users').doc(user.id).collection('userEvents').doc();
-  //          userRef.set({
-    //            name: eventName,
-      //          date: eventDate,
-        //        time: eventTime,
-          //      address: eventAddr,
-//                textBody: eventTxtBdy,
-  //              going: going,
-    //            //creator: user.id,
-      //          eventId: ref.id,
-        //        tag: tag
-          //  })
-//            .then(function () {
-  //              console.log("Document successfully written!");
-    //        })
-      //      .catch(function (error) {
-        //        console.error("Error writing document: ", error);
-//            });
+            //            const userRef = db.collection('users').doc(user.id).collection('userEvents').doc();
+            //          userRef.set({
+            //            name: eventName,
+            //          date: eventDate,
+            //        time: eventTime,
+            //      address: eventAddr,
+            //                textBody: eventTxtBdy,
+            //              going: going,
+            //            //creator: user.id,
+            //          eventId: ref.id,
+            //        tag: tag
+            //  })
+            //            .then(function () {
+            //              console.log("Document successfully written!");
+            //        })
+            //      .catch(function (error) {
+            //        console.error("Error writing document: ", error);
+            //            });
             //})
         })
 
@@ -209,7 +209,7 @@ function sortDisplayEvents(doc) {
     let userTag = document.getElementById('tagField').value;
     let tagArray = userTag.match(/\w+|\s+|[^\s\w]+/g);
     let eventTag = doc.data().tags;
-    const eventList = document.querySelector('#eventList');
+    const eventList = document.getElementById('eventList');
     if (filterTags(tagArray, eventTag)) {
         let li = document.createElement('li');
         let name = document.createElement('span');
@@ -233,23 +233,72 @@ function pullEventStream() {
         })
     })
 }
-
+pullEventStream();
+/////////////////////////////////////////////////////////
 
 //rsvp function
-function rsvp() {
-    let arr;
-    firebase.auth().inAuthStateChanged(function (user) {
-        db.collection("event").doc("id").onsnapshot(
-            function (snap) {
-                arr = snap.data().going;
-            }
-        )
-        arr.pop(user.id);
-        db.collection('event').doc('id').update()
-        db.collection('users').doc(users.id).onsnapshot(
-            function (snap) {
-                ar
-            }
-        )
+function rsvp(event) {
+    document.getElementById('rsvp').addEventListener('click', function (e) {
+        e.preventDefault();
+        let arr;
+        let arr2;
+        firebase.auth().inAuthStateChanged(function (user) {
+            db.collection("event").doc(event.id).get().then(
+                (doc) => {
+                    if (doc.exists) {
+                        arr = doc.data().going;
+                        arr.push(user.id);
+                        db.collection('event').doc(event.id).update({
+                            going: arr
+                        })
+                    } else{
+                        console.log('doc does not exist');
+                    }
+                }
+            )
+
+            db.collection('users').doc(user.id).get().then(
+                (doc) => {
+                    if (doc.exists){
+                        arr2 = doc.data().going;
+                        arr2.push(event.id);
+                        db.collection('users').doc(user.id).update({
+                            going:arr2
+                        })
+                    } else{
+                        console.log('doc does not exist');
+                    }
+                }
+            )
+                
+            
+        })
     })
 }
+//need to decide what info should be kept for user profile.
+function createProfile(){
+    document.getElementById('submit').addEventListener('submit', function(e){
+        e.preventDefault();
+        let name = getElementById('nameField').value;
+        let age = getElementById('ageField').value;
+        let bio = getElementById('bioField').value;
+
+        firebase.auth().inAuthStateChanged(function (user){
+            const ref = db.collection('users').doc();
+            ref.set({
+                name: name,
+                age: age,
+                bio: bio,
+                userid: user.id
+            })
+            .then(function () {
+                console.log("Document successfully written!");
+            })
+            .catch(function (error) {
+                console.error("Error writing document: ", error);
+            });
+        })
+        
+    })
+}
+

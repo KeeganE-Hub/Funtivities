@@ -33,7 +33,8 @@ display: block;
 right: 10vw;
 border: 4px #426b69;
 }
-.formGroup > label{
+.form-group {
   width: 90vw;
   background-color: #e49f61;
+  width: auto;
 }
