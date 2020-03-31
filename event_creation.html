@@ -42,15 +42,15 @@
                 <label for="formGroupExampleInput">Event Name</label>
                 <input type="text" class="form-control" id="eventNameForm" placeholder="Event Name">
             </div>
-            <div>
-                <div class="form-group bg">
-                    <label for="formGroupExampleInput2">Date</label>
-                    <input type="text" class="form-control" id="eventDateForm" placeholder="Date">
+            <div class="form-group bg">
+                <label for="formGroupExampleInput">Time</label>
+                <div class="input-group date" data-provide="datepicker" >
+                    <input type="text" class="form-control">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
                 </div>
-                <div class="form-group bg">
-                    <label for="formGroupExampleInput">Time</label>
-                    <input type="text" class="form-control" id="eventTimeForm" placeholder="Time">
-                </div>
+                
             </div>
             <div class="form-group bg">
                 <label for="formGroupExampleInput2">Address</label>
@@ -108,6 +108,7 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script src="scripts/jscripts.js"></script>
+    <script src="scripts/jquery-3.4.1.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
