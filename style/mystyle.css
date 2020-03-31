@@ -38,3 +38,38 @@ border: 4px #426b69;
   background-color: #e49f61;
   width: auto;
 }
+
+
+.navbar-custom {
+  background-color: #ff8C00
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text,
+.navbar-custom .nav-item.active .nav-link 
+{
+  color: #eff6f7;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ff7c00
+}
+
+.navbar-center
+{
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.navbar-bottom {
+  background-color: #ff7c00;
+  height:7vh;
+}
+
+.footernote {
+  width:25vw;
+  text-align:center;
+}
