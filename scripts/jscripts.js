@@ -197,42 +197,33 @@ tagEvent();
 //that dont match the users tags. the sortDisplayEvents func
 //generates li elements ana appends spans containing the name 
 //time of the event. forEach currently does not have upper limit.
-function filterTags(userTags, eventTags) {
-    for (let i = 0; i < userTags.length - 2; i++) {
-        for (let j = 0; j < eventTags; j++) {
-            if (userTags[i] == eventTags[j]) {
-                return true;
-            }
-        }
-    }
-}
+
 
 function sortDisplayEvents(doc) {
-    let userTag = document.getElementById('tagField').value;
-    let tagArray = userTag.match(/\w+|\s+|[^\s\w]+/g);
-    let eventTag = doc.data().tag;
     const eventList = document.getElementById('eventList');
-    if (filterTags(tagArray, eventTag)) {
-        let li = document.createElement('li');
-        let name = document.createElement('span');
-        let time = document.createElament('span');
-
-        li.setAttribute('data.id', doc.id);
-        name.textContent = doc.data.name;
-        time.textContent = doc.data.time;
-
-        li.appendChild(name);
-        li.appendChild(time);
-        eventList.appendChild(li);
-    }
-
+    let li = document.createElement('li');
+    let name = document.createElement('span');
+    let time = document.createElament('span');
+    let a = document.createElement('a');
+    a.setAttribute('href', 'event_page.html');
+    li.setAttribute('data.id', doc.id);
+    name.textContent = doc.data().name;
+    time.textContent = doc.data().time;
+    li.appendChild(name);
+    li.appendChild(time);
+    eventList.appendChild(li);
 }
 
 function pullEventStream() {
-    db.collection('events').get().then((snapshot) => {
-        snapshot.docs.forEach(doc => {
-            sortDisplayEvents(doc);
-        })
+    document.getElementById('searchButt').addEventListener('click', function (e) {
+        let userTag = document.getElementById('tagField').value;
+        let tagArray = userTag.match(/\w+|\s+|[^\s\w]+/g);
+        db.collection('events').where('tag', 'array-contains-any', tagArray)
+            .get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    sortDisplayEvents(doc);
+                })
+            })
     })
 }
 
