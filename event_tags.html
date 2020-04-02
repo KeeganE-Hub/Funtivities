@@ -31,11 +31,20 @@
     <!--  HTML Section -->
     <!----------------------->
     <!--***********************-->
-    <div class="d-flex text-white">
-        <div class="p-2 tb1">Back</div>
-        <div class="p-2 flex-grow-1 tb2">Funtivities</div>
-        <div class="p-2 tb1">Profile</div>
-    </div>
+    <nav class="navbar navbar-custom">
+        <form class="form-inline">
+          <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
+          <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
+          </form>
+          <div class="btn-group dropleft">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Profile</a>
+                <a href="#" class="dropdown-item">Events List</a>
+                <a href="findtag.html" class="dropdown-item">Tags</a>
+            </div>
+        </div>
+      </nav>
     <br/>
     <form>
         <div class="form-group bg-warning">
@@ -47,32 +56,30 @@
                 <label class="" for="formGroupExampleInput2">Applied Tags</label>
                 <p id="appliedTags">No tags added</p>
             </div>
-            <div class="form-group bg-warning">
-                <label  for="formGroupExampleInput">Suggested Tags</label>
-                <div class="d-flex flex-wrap">
-                    <div class="p-2">Flex item 1</div>
-                    <div class="p-2">Flex item 2</div>
-                    <div class="p-2">Flex item 3</div>
-                    <div class="p-2">Flex item 1</div>
-                    <div class="p-2">Flex item 2</div>
-                    <div class="p-2">Flex item 3</div>
-                </div>
-                
-            </div>
+          
         </div>
     </form>
-    <button type="button" id="tagbutt" class="btn btn-outline-primary float-right mx-4">add tags</button>
+    <a>
+        <button type="button" id="tagbutt" class="btn btn-outline-primary float-right mx-4">add tags</button></a>
 
 
 
 
 
-    <div class="d-flex text-white fixed-bottom">
-        <div class="p-3 w-25 tb1">Home</div>
-        <div class="p-3 w-25 tb2">Search</div>
-        <div class="p-3 w-25 tb1">New Event</div>
-        <div class="p-3 w-25 tb2">Calender</div>
-    </div>
+    <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="index.html" class="footernote">
+        <div class="container-fluid">Home</div>
+        </a>
+        <a href="findevent.html" class="footernote">
+        <div class="container-fluid">Search Event</div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+        <div class="container-fluid">Make Event</div>
+        </a>
+        <a href="calendar.html" class="footernote">
+          <div class="container-fluid">Calendar</div>
+          </a>
+      </footer>
 
 
 
