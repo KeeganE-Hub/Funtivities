@@ -4,6 +4,8 @@
 <head>
     <style>
         #mycalendar {
+            position: absolute;
+            left: 1.2%;
             height: 94vh;
             width: 97vw;
         }
@@ -11,16 +13,55 @@
         #links {
             position: absolute;
             left: 5%;
-            top: 38%;
+            top: 50%;
         }
 
         #result {
             position: absolute;
-            top: 40%;
-            left: 5%;
+            left: 50%;
+            top: 50%;
         }
     </style>
+
+    <meta charset="utf-8">
+    <title>My BCIT Project</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="style/mystyle.css">
 </head>
+
+<body>
+    <nav class="navbar navbar-custom">
+        <form class="form-inline">
+            <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
+            <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
+        </form>
+        <div class="btn-group dropleft">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Profile</a>
+                <a href="calendar.html" class="dropdown-item">Events List</a>
+                <a href="findtag.html" class="dropdown-item">Tags</a>
+            </div>
+        </div>
+    </nav>
+</body>
 
 <body class="yui3-skin-sam">
     <title>Funtivities</title>
@@ -31,20 +72,36 @@
             <div id="mycalendar"></div>
         </div>
         <div id="rightcolumn" class="yui3-u">
-            <div id="links">
+            <div id="links" style="">
                 Selected date: <span id="selecteddate"></span>
             </div>
-            <h3 id="result"></h3>
+            <h6 id="result"></h6>
         </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <!-- <script src="scripts/firebase_api.js"> </script> -->
     <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
 
-    <script type="text/javascript">
+    <script>
         var firebaseConfig = {
             apiKey: "AIzaSyC9TTkmaZ5K32mGOSjniYSqMuLrzju0jts",
             authDomain: "funtivities-e4536.firebaseapp.com",
@@ -61,6 +118,7 @@
         let eventDateArr = []
         let eventDateSepArr = []
         let month_arr = [];
+
         month_arr[0] = "January";
         month_arr[1] = "February";
         month_arr[2] = "March";
@@ -109,21 +167,20 @@
                 Y.one("#selecteddate").setHTML(dtdate.format(newDate));
                 readData();
                 for (let i = 0; i < eventDateArr.length; i++) {
-                    if (eventDateArr[i].eventDate == dtdate.format(newDate) && first){
+                    if (eventDateArr[i].eventDate == dtdate.format(newDate) && first) {
                         let names = "";
-                        for(let j = 0; j < eventDateArr[i].names.length; j++) {
-                            if(names == "") {
+                        for (let j = 0; j < eventDateArr[i].names.length; j++) {
+                            if (names == "") {
                                 names = eventDateArr[i].names[j];
-                            }
-                            else {
+                            } else {
                                 names = names + ", " + eventDateArr[i].names[j];
                             }
                         }
                         first = false;
-                        str = str + "Title: " + eventDateArr[i].title + "<br>"
-                            + "Participants: " + names + "<br>"
-                            + "Place: " + eventDateArr[i].place + "<br>"
-                            + "Time: " + eventDateArr[i].fullEvenDate + "<br>";
+                        str = str + "Title: " + eventDateArr[i].title + "<br>" +
+                            "Participants: " + names + "<br>" +
+                            "Address: " + eventDateArr[i].address + "<br>" +
+                            "Time: " + eventDateArr[i].fullEvenDate + "<br>";
                     }
                 }
                 result.innerHTML = str;
@@ -160,7 +217,7 @@
                         eventDate: theEventDate,
                         fullEvenDate: d.toString(),
                         names: doc.data().participants,
-                        place: doc.data().place,
+                        address: doc.data().address,
                         title: doc.data().title
                     });
                 });
@@ -172,14 +229,15 @@
             td = document.getElementsByTagName("td");
             div = document.getElementsByTagName("div");
 
-            for(let i = 0; i < td.length; i++) {
+            for (let i = 0; i < td.length; i++) {
                 td[i].style.color = "black";
             }
 
             for (let i = 0; i < td.length; i++) {
                 for (let j = 0; j < eventDateSepArr.length; j++) {
                     if (td[i].textContent == eventDateSepArr[j].day &&
-                        div[5].textContent == (month_arr[eventDateSepArr[j].monthIndex]) + " " + eventDateSepArr[j].year) {
+                        div[5].textContent.startsWith((month_arr[eventDateSepArr[j].monthIndex]) + " " + eventDateSepArr[j].year)
+                    ) {
                         td[i].style.color = "red";
                     }
                 }
@@ -191,6 +249,23 @@
             color();
         }, 1000);
     </script>
+</body>
+
+<body>
+    <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="index.html" class="footernote">
+            <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        </a>
+        <a href="findevent.html" class="footernote">
+            <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+            <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+        </a>
+        <a href="calendar.html" class="footernote">
+            <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+        </a>
+    </footer>
 </body>
 
 </html>
