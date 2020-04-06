@@ -146,7 +146,7 @@ function addEvent() {
         })
 
 }
-//addEvent();
+addEvent();
 
 
 //displays event info from database to text on event page
@@ -164,7 +164,7 @@ function showEvent(event) {
 }
 //takes whitespace separated tags, arrays them and adds them to existing tag array
 function tagEvent(event) {
-    document.getElementById("tagbutt").addEventListener("click",
+    document.getElementById("tagButt").addEventListener("click",
         function (e) {
             e.preventDefault();
             let userTags = document.getElementById("eventTagForm").value;
