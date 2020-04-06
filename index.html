@@ -1,75 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Funtivities - Home Page</title>
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    
+
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="style/mystyle.css">
+    <link rel="stylesheet" href="style/bootstrap.css">
+
+</head>
+<body>
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
+    
 <!-- HOME PAGE
     Connects to all other primary pages -->
 
-<head>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
-</head>
+    
+    <nav class="navbar navbar-custom">
+        <form class="form-inline">
+          <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
+          <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
+          </form>
+          <div class="btn-group dropleft">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
+            <div class="dropdown-menu">
+                <a href="profile.html" class="dropdown-item">Profile</a>
+                <a href="calendar.html" class="dropdown-item">Events List</a>
+                <a href="findtag.html" class="dropdown-item">Tags</a>
+            </div>
+        </div>
+      </nav>
 
-<body>
-    <title>Funtivities</title>
-    <h1 style="color:coral; text-align: center;"><b>This is the landing page of Funtivities</b></h1>
-    <h3>Top bar</h3>
-    <h4>WELCOME TO FUNTIVITIES</h4>
-    <h4>Profile</h4>
-    <h4>SIGN IN</h4>
-
-    <br>
-    <br>
-
-    <h3>Bottom bar</h3>
-    <a href="event_creation.html" title="This links to making an event.">
-        <h4>CREATE EVENT</h4>
-    </a>
-    <h4>HOME</h4>
-    <a href="findevent.html" title="Find a nearby event.">
-        <h4>FIND EVENT</h4>
-    </a>
-    <a href="calendar.html" title="Calendar">
-        <h4>CALENDAR</h4>
-    </a>
+      <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="index.html" class="footernote">
+        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        </a>
+        <a href="findevent.html" class="footernote">
+        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+        </a>
+        <a href="calendar.html" class="footernote">
+          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+          </a>
+      </footer>
 
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
 
-    <!----------------------------------------------->
-    <!-- CSS: Bootstrap, Firebase, other API -->
-    <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
 
     <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, other API's    -->
+    <!-- JS: Bootstrap, Firebase, API related    -->
     <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-firestore.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-analytics.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-
-    <script src="jscripts.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-analytics.js"></script>
     <script src="scripts/firebase_api.js"></script>
-</body>
+  
 
-</html>
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="scripts/script.js"></script>
+
+
+     <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
+
+
+</body>
+</html>                 
