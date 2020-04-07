@@ -119,6 +119,7 @@ function addEvent() {
                         })
                         .then(function () {
                             console.log("Document successfully written!");
+                            alert("Event made successfully!");
                         })
                         .catch(function (error) {
                             console.error("Error writing document: ", error);
