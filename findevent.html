@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
+    <title>Funtivities - Find Event</title>
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
     <!----------------------------------------------->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -25,12 +23,12 @@
     <link rel="stylesheet" href="style/mystyle.css">
 
 </head>
-
-<body class="bg">
+<body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    <!--***********************-->
+    
+
     <nav class="navbar navbar-custom">
         <form class="form-inline">
           <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
@@ -40,25 +38,23 @@
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
             <div class="dropdown-menu">
                 <a href="profile.html" class="dropdown-item">Profile</a>
-                <a href="#" class="dropdown-item">Events List</a>
-                <a href="findtag.html" class="dropdown-item">Tags</a>
+                <a href="calendar.html" class="dropdown-item">Events List</a>
             </div>
         </div>
       </nav>
 
-
-    <footer class="d-flex footer fixed-bottom navbar-bottom">
+      <footer class="d-flex footer fixed-bottom navbar-bottom">
         <a href="index.html" class="footernote">
-        <div class="container-fluid">Home</div>
+        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
         </a>
         <a href="findevent.html" class="footernote">
-        <div class="container-fluid">Search Event</div>
+        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
         </a>
         <a href="event_creation.html" class="footernote">
-        <div class="container-fluid">Make Event</div>
+        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
         </a>
         <a href="calendar.html" class="footernote">
-          <div class="container-fluid">Calendar</div>
+          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
           </a>
       </footer>
 

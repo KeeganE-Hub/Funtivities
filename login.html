@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Funtivities - Home Page</title>
+    <title>Boilerplate</title>
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -14,8 +14,6 @@
     <!----------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <script src="bower_components/firebaseui/dist/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="bower_components/firebaseui/dist/firebaseui.css" />
 
     
 
@@ -23,47 +21,16 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="style/mystyle.css">
-    <link rel="stylesheet" href="style/bootstrap.css">
 
 </head>
 <body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    
-<!-- HOME PAGE
-    Connects to all other primary pages -->
 
-    
-    <nav class="navbar navbar-custom">
-        <form class="form-inline">
-          <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
-          <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
-          </form>
-          <div class="btn-group dropleft">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
-            <div class="dropdown-menu">
-                <a href="profile.html" class="dropdown-item">Profile</a>
-                <a href="calendar.html" class="dropdown-item">Events List</a>
-                <a href="findtag.html" class="dropdown-item">Tags</a>
-            </div>
-        </div>
-      </nav>
-
-      <footer class="d-flex footer fixed-bottom navbar-bottom">
-        <a href="index.html" class="footernote">
-        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
-        </a>
-        <a href="findevent.html" class="footernote">
-        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
-        </a>
-        <a href="event_creation.html" class="footernote">
-        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
-        </a>
-        <a href="calendar.html" class="footernote">
-          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
-          </a>
-        </footer>
+      
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
 
 
 
