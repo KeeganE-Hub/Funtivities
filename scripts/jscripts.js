@@ -48,6 +48,8 @@
 //lemme know if you find any faults or anything confusing 
 //in my code 
 
+// Code to go to login page if user isn't logged in
+// window.location.replace("url");
 
 
 //made this and the following function "writeEvent" to have modular schemas for future development
@@ -305,4 +307,12 @@ function createProfile() {
         })
 
     })
+}
+
+//Return user to login page if not logged in.
+function checkLogin() {
+    firebase.auth().inAuthStateChanged(function (user) {
+        if (!user) {
+            window.location.replace("login.html");
+        }
 }
