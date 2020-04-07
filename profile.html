@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Funtivities - Your Profile</title>
@@ -8,14 +9,14 @@
     <!--  Meta tag for rendering on mobile devices -->
     <!----------------------------------------------->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-    
+
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -23,18 +24,19 @@
     <link rel="stylesheet" href="style/mystyle.css">
 
 </head>
+
 <body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    
+
 
     <nav class="navbar navbar-custom">
         <form class="form-inline">
-          <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
-          <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
-          </form>
-          <div class="btn-group dropleft">
+            <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
+            <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
+        </form>
+        <div class="btn-group dropleft">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
             <div class="dropdown-menu">
                 <a href="profile.html" class="dropdown-item">Profile</a>
@@ -52,7 +54,7 @@
         </div>
         <br>
         <br>
-        <div id='profEventButt'>Look at RSVP list</div>
+        <div id='profEventButt'>RSVP list</div>
         <h7 id="whichLabel"></h7>
         <div id="userEventDiv"></div>
         <div id="goingEventDiv"></div>
@@ -110,13 +112,21 @@
         function showUserInfo() {
             document.getElementById('goingEventDiv').style.display = 'none';
             document.getElementById('whichLabel').innerHTML = "Your Events";
-            db.collection('users').doc("9sgPtNN4eIVaMdeOtCxi0V8EH5N2").onSnapshot(
-                function (snap) {
-                    document.getElementById('profileName').innerHTML = snap.data().name;
-                    document.getElementById('profileAge').innerHTML = snap.data().age;
-                    document.getElementById('profileBody').innerHTML = snap.data().body;
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    db.collection('users').doc(user.uid).onSnapshot(
+                        function (snap) {
+                            document.getElementById('profileName').innerHTML = snap.data().name;
+                            document.getElementById('profileAge').innerHTML = snap.data().age;
+                            document.getElementById('profileBody').innerHTML = snap.data().body;
+                        }
+                    )
+                } else {
+                    // No user is signed in.
                 }
-            )
+            });
+
+
         }
         showUserInfo();
         //calls the id of the tag on the page things will be posted to
@@ -146,12 +156,20 @@
         function showUserEvents() {
             //accesses db in the sub doc under users called userEvents and for every doc()
             //it calls the above 'makeDivs' that displays them
-            db.collection('users').doc("9sgPtNN4eIVaMdeOtCxi0V8EH5N2")
-                .collection('userEvents').get().then((snapshot) => {
-                    snapshot.docs.forEach(doc => {
-                        makeUserDivs(doc);
-                    })
-                })
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    db.collection('users').doc(user.uid)
+                        .collection('userEvents').get().then((snapshot) => {
+                            snapshot.docs.forEach(doc => {
+                                makeUserDivs(doc);
+                            })
+                        })
+                } else {
+                    // No user is signed in.
+                }
+            });
+
+
         }
 
         //calls the id of the tag on the page things will be posted to
@@ -182,12 +200,20 @@
         function showGoingEvents() {
             //accesses db in the sub doc under users called userEvents and for every doc()
             //it calls the above 'makeDivs' that displays them
-            db.collection('users').doc("9sgPtNN4eIVaMdeOtCxi0V8EH5N2")
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    db.collection('users').doc(user.uid)
                 .collection('goingEvents').get().then((snapshot) => {
                     snapshot.docs.forEach(doc => {
                         makeGoingDivs(doc);
                     })
                 })
+                } else {
+                    // No user is signed in.
+                }
+            });
+
+            
         }
 
         function showButt() {
@@ -204,12 +230,12 @@
                 document.getElementById('userEventDiv').style.display = 'none';
                 document.getElementById('goingEventDiv').style.display = 'block';
                 document.getElementById('whichLabel').innerHTML = "RSVP'd Events"
-                document.getElementById('profEventButt').innerHTML = "Look at your events"
+                document.getElementById('profEventButt').innerHTML = "Your Evaents"
             } else {
                 document.getElementById('userEventDiv').style.display = 'block';
                 document.getElementById('goingEventDiv').style.display = 'none';
                 document.getElementById('whichLabel').innerHTML = "Your Events";
-                document.getElementById('profEventButt').innerHTML = "Look at RSVP list"
+                document.getElementById('profEventButt').innerHTML = "RSVP'd Events"
             }
         }
         showButt();
