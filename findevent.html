@@ -77,6 +77,9 @@
             let name = document.createElement('span');
             let date = document.createElement('span');
             let address = document.createElement('span');
+            let signup = document.createElement('button');
+            signup.setAttribute('id', 'signup');
+            signup.innerHTML="Sign up";
             eventDiv.setAttribute('id', 'eventDiv');
             eventDiv.setAttribute('data-id', doc.id);
             //Give spans their content about event
@@ -87,6 +90,7 @@
             eventDiv.appendChild(name);
             eventDiv.appendChild(date);
             eventDiv.appendChild(address);
+            eventDiv.appendChild(signup);
             listSpace.appendChild(eventDiv);
         }
     
@@ -98,6 +102,12 @@
                 })
             })
         }
+
+        function addEvent() {
+            
+        }
+
+        document.getElementById('signup').onclick = addEvent;
     </script>
 
 
