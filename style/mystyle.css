@@ -18,7 +18,6 @@ div.run{
   background-color: #e49f61;
   text-align: center;
   width:95vw;
-  height:100vh;
   z-index: 1;
   padding: 10vw;
 
@@ -30,13 +29,16 @@ div.run{
   padding: 2vw;
   background-color: #b9b8c2;
 }
+
 #profEventButt{
-  background-color: #b5ca8d;
-  border: 10px #b9b8c2;
-  height: 7vh;
+  background-color: #b9b8c2;
+  border: 2px solid black;
+  height: 4vh;
   width: 10vw;
   margin: auto;
+  cursor: default;
 }
+
 #eventDiv{
   border: 5px #b9b8c2;
   background-color: #426b69;

@@ -52,7 +52,7 @@
         </div>
         <br>
         <br>
-        <div id='profEventButt'></div>
+        <div id='profEventButt'>Look at RSVP list</div>
         <h7 id="whichLabel"></h7>
         <div id="userEventDiv"></div>
         <div id="goingEventDiv"></div>
@@ -127,7 +127,6 @@
             let eventDiv = document.createElement('div');
             let name = document.createElement('span');
             let date = document.createElement('span');
-            let time = document.createElement('span');
             let address = document.createElement('span');
             //sets id: id for css/data.id for event.id
             eventDiv.setAttribute('id', 'eventDiv');
@@ -139,12 +138,10 @@
             //give spans content
             name.textContent = doc.data().name;
             address.textContent = doc.data().address;
-            date.textContent = disDate.getDate();
-            time.textContent = disDate.getTime();
+            date.textContent = doc.data().date.toDate();
             //put spans on div
             eventDiv.appendChild(name);
             eventDiv.appendChild(date);
-            eventDiv.appendChild(time);
             eventDiv.appendChild(address);
             //put div on page div
             userEventsList.appendChild(eventDiv);
@@ -169,7 +166,6 @@
             let eventDiv = document.createElement('div');
             let name = document.createElement('span');
             let date = document.createElement('span');
-            let time = document.createElement('span');
             let address = document.createElement('span');
             //sets id: id for css/data.id for event.id
             eventDiv.setAttribute('id', 'eventDiv');
@@ -181,12 +177,10 @@
             //give spans content
             name.textContent = doc.data().name;
             address.textContent = doc.data().address;
-            date.textContent = disDate.getDate();
-            time.textContent = disDate.getTime();
+            date.textContent = doc.data().date.toDate();
             //put spans on div
             eventDiv.appendChild(name);
             eventDiv.appendChild(date);
-            eventDiv.appendChild(time);
             eventDiv.appendChild(address);
             //put div on page div
             goingEventsList.appendChild(eventDiv);
@@ -217,10 +211,12 @@
                 document.getElementById('userEventDiv').style.display = 'none';
                 document.getElementById('goingEventDiv').style.display = 'block';
                 document.getElementById('whichLabel').innerHTML = "RSVP'd Events"
+                document.getElementById('profEventButt').innerHTML = "Look at your events"
             } else {
                 document.getElementById('userEventDiv').style.display = 'block';
                 document.getElementById('goingEventDiv').style.display = 'none';
                 document.getElementById('whichLabel').innerHTML = "Your Events";
+                document.getElementById('profEventButt').innerHTML = "Look at RSVP list"
             }
         }
         showButt();
