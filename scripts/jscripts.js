@@ -151,7 +151,7 @@ addEvent();
 
 //displays event info from database to text on event page
 function showEvent(event) {
-    db.collection("events").doc(event.id).onsnapshot(
+    db.collection("events").doc(event).onsnapshot(
         function (snap) {
             //id names are placeholders
             document.getElementById("eventNameText").innerHTML = snap.data().name;
@@ -202,10 +202,9 @@ tagEvent();
 function sortDisplayEvents(doc) {
     const eventList = document.getElementById('eventList');
     let li = document.createElement('li');
-    let name = document.createElement('span');
-    let time = document.createElament('span');
+    let name = document.createElement('div');
+    let time = document.createElament('div');
     let a = document.createElement('a');
-    a.setAttribute('href', 'event_page.html');
     li.setAttribute('data.id', doc.id);
     name.textContent = doc.data().name;
     time.textContent = doc.data().time;
@@ -217,8 +216,7 @@ function sortDisplayEvents(doc) {
 function pullEventStream() {
     document.getElementById('searchButt').addEventListener('click', function (e) {
         let userTag = document.getElementById('tagField').value;
-        let tagArray = userTag.match(/\w+|\s+|[^\s\w]+/g);
-        db.collection('events').where('tag', 'array-contains-any', tagArray)
+        db.collection('events').where('tag', 'array-contains-any', userTag)
             .get().then((snapshot) => {
                 snapshot.docs.forEach(doc => {
                     sortDisplayEvents(doc);
@@ -232,14 +230,14 @@ function pullEventStream() {
 /////////////////////////////////////////////////////////
 
 //rsvp function
-function rsvp(event) {
+function rsvp() {
     document.getElementById('rsvp').addEventListener('click', function (e) {
         e.preventDefault();
         let arr;
         let arr2;
         firebase.auth().inAuthStateChanged(function (user) {
             if (user) {
-                db.collection("event").doc(event.id).get().then(
+                db.collection("events").doc(event.id).get().then(
                     (doc) => {
                         if (doc.exists) {
                             arr = doc.data().going;
