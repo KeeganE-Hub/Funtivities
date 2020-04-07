@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Funtivities - Home Page</title>
+    <title>Funtivities - Main Page</title>
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -21,7 +21,6 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="style/mystyle.css">
-    <link rel="stylesheet" href="style/bootstrap.css">
 
 </head>
 <body>
@@ -29,10 +28,7 @@
     <!--  HTML Section -->
     <!----------------------->
     
-<!-- HOME PAGE
-    Connects to all other primary pages -->
 
-    
     <nav class="navbar navbar-custom">
         <form class="form-inline">
           <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
@@ -43,7 +39,6 @@
             <div class="dropdown-menu">
                 <a href="profile.html" class="dropdown-item">Profile</a>
                 <a href="calendar.html" class="dropdown-item">Events List</a>
-                <a href="findtag.html" class="dropdown-item">Tags</a>
             </div>
         </div>
       </nav>
@@ -63,8 +58,12 @@
           </a>
       </footer>
 
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
+
+    <!-- <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div> -->
+    <a href="login.html"><div>
+      <h2>Please log in</h2>
+    </div></a>
 
 
 

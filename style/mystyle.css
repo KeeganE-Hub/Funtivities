@@ -56,6 +56,10 @@ border: 4px #426b69;
   width: auto;
 }
 
+#eventFind, #eventDiv {
+  border: 2px solid black;
+}
+
 
 .navbar-custom {
   background-color: #ff8C00
@@ -94,4 +98,24 @@ border: 4px #426b69;
 .icons {
   height:5vh;
   margin-top:1vh;
+}
+
+#mycalendar {
+  position: absolute;
+  left: 1.2%;
+  height: 94vh;
+  width: 97vw;
+}
+
+#links {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+}
+
+#result {
+  background-color: antiquewhite;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }

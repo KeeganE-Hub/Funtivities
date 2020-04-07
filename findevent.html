@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Funtivities - Find Event</title>
+<<<<<<< HEAD
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
+=======
+>>>>>>> cfd1e6f0d1514af56975d3c9ff2439c953831428
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
     <!----------------------------------------------->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -25,12 +28,12 @@
     <link rel="stylesheet" href="style/mystyle.css">
 
 </head>
-
-<body class="bg">
+<body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
-    <!--***********************-->
+    
+
     <nav class="navbar navbar-custom">
         <form class="form-inline">
             <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
@@ -40,12 +43,12 @@
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
             <div class="dropdown-menu">
                 <a href="profile.html" class="dropdown-item">Profile</a>
-                <a href="#" class="dropdown-item">Events List</a>
-                <a href="findtag.html" class="dropdown-item">Tags</a>
+                <a href="calendar.html" class="dropdown-item">Events List</a>
             </div>
         </div>
     </nav>
 
+<<<<<<< HEAD
 
     <footer class="d-flex footer fixed-bottom navbar-bottom">
         <a href="main.html" class="footernote">
@@ -165,6 +168,57 @@
         //         })
         //     }
         // 
+=======
+      <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="index.html" class="footernote">
+        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        </a>
+        <a href="findevent.html" class="footernote">
+        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+        </a>
+        <a href="calendar.html" class="footernote">
+          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+          </a>
+      </footer>
+
+    <div class="center run">
+      <div id="eventFind"></div>
+    </div>
+    <script>
+
+        const listSpace = document.querySelector('#eventFind');
+
+        function thisEvent(doc){
+            //Make elements
+            let eventDiv = document.createElement('div');
+            let name = document.createElement('span');
+            let date = document.createElement('span');
+            let address = document.createElement('span');
+            eventDiv.setAttribute('id', 'eventDiv');
+            eventDiv.setAttribute('data-id', doc.id);
+            //Give spans their content about event
+            name.textContent = doc.data().name;
+            address.textContent = doc.data().address;
+            date.textContent = doc.data().date.toDate();
+            //Add spans to div
+            eventDiv.appendChild(name);
+            eventDiv.appendChild(date);
+            eventDiv.appendChild(address);
+            listSpace.appendChild(eventDiv);
+        }
+    
+        function listEvents() {
+            //Access database for events and lists objects.
+            db.collection("events").onSnapshot(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    thisEvent(doc);
+                })
+            })
+        }
+>>>>>>> cfd1e6f0d1514af56975d3c9ff2439c953831428
     </script>
 
 

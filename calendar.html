@@ -1,67 +1,62 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <style>
-        #mycalendar {
-            position: absolute;
-            left: 1.2%;
-            height: 94vh;
-            width: 97vw;
-        }
-
-        #links {
-            position: absolute;
-            left: 5%;
-            top: 50%;
-        }
-
-        #result {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-        }
-    </style>
-
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
+    <title>Funtivities - Calendar</title>
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
     <!----------------------------------------------->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
+    
 
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="style/mystyle.css">
-</head>
 
+</head>
 <body>
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
+    
+
     <nav class="navbar navbar-custom">
         <form class="form-inline">
-            <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
-            <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
-        </form>
-        <div class="btn-group dropleft">
+          <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
+          <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
+          </form>
+          <div class="btn-group dropleft">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
             <div class="dropdown-menu">
                 <a href="profile.html" class="dropdown-item">Profile</a>
                 <a href="calendar.html" class="dropdown-item">Events List</a>
-                <a href="findtag.html" class="dropdown-item">Tags</a>
             </div>
         </div>
-    </nav>
-</body>
+      </nav>
+
+      <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="index.html" class="footernote">
+        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        </a>
+        <a href="findevent.html" class="footernote">
+        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+        </a>
+        <a href="calendar.html" class="footernote">
+          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+          </a>
+      </footer>
 
 <body class="yui3-skin-sam">
     <title>Funtivities</title>
@@ -72,14 +67,12 @@
             <div id="mycalendar"></div>
         </div>
         <div id="rightcolumn" class="yui3-u">
-            <div id="links" style="">
+            <div id="links">
                 Selected date: <span id="selecteddate"></span>
             </div>
             <h6 id="result"></h6>
         </div>
     </div>
-
-
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -98,174 +91,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <!-- <script src="scripts/firebase_api.js"> </script> -->
+    <script src="scripts/firebase_api.js"> </script>
     <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+    <script src="scripts/calendar.js"></script>
 
-    <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyC9TTkmaZ5K32mGOSjniYSqMuLrzju0jts",
-            authDomain: "funtivities-e4536.firebaseapp.com",
-            databaseURL: "https://funtivities-e4536.firebaseio.com",
-            projectId: "funtivities-e4536",
-            storageBucket: "funtivities-e4536.appspot.com",
-            messagingSenderId: "359469274628",
-            appId: "1:359469274628:web:9733175c96f2ab8db98751"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        let eventDateArr = []
-        let eventDateSepArr = []
-        let month_arr = [];
-
-        month_arr[0] = "January";
-        month_arr[1] = "February";
-        month_arr[2] = "March";
-        month_arr[3] = "April";
-        month_arr[4] = "May";
-        month_arr[5] = "June";
-        month_arr[6] = "July";
-        month_arr[7] = "August";
-        month_arr[8] = "September";
-        month_arr[9] = "October";
-        month_arr[10] = "November";
-        month_arr[11] = "December";
-
-        YUI().use('calendar', 'datatype-date', 'cssbutton', function (Y) {
-
-            // Create a new instance of calendar, placing it in
-            // #mycalendar container, setting its width to 500px,
-            // the flags for showing previous and next month's
-            // dates in available empty cells to true, and setting
-            // the date to today's date.
-            var calendar = new Y.Calendar({
-                contentBox: "#mycalendar",
-                width: '500px',
-                showPrevMonth: false,
-                showNextMonth: false,
-                date: new Date()
-            }).render();
-
-            // Get a reference to Y.DataType.Date
-            var dtdate = Y.DataType.Date;
-
-            // Listen to calendar's selectionChange event.
-            calendar.on("selectionChange", function (ev) {
-                let first = true;
-                let str = "";
-                let result = document.getElementById("result");
-
-                // Get the date from the list of selected
-                // dates returned with the event (since only
-                // single selection is enabled by default,
-                // we expect there to be only one date)
-                var newDate = ev.newSelection[0];
-
-                // Format the date and output it to a DOM
-                // element.
-                Y.one("#selecteddate").setHTML(dtdate.format(newDate));
-                readData();
-                for (let i = 0; i < eventDateArr.length; i++) {
-                    if (eventDateArr[i].eventDate == dtdate.format(newDate) && first) {
-                        let names = "";
-                        for (let j = 0; j < eventDateArr[i].names.length; j++) {
-                            if (names == "") {
-                                names = eventDateArr[i].names[j];
-                            } else {
-                                names = names + ", " + eventDateArr[i].names[j];
-                            }
-                        }
-                        first = false;
-                        str = str + "Title: " + eventDateArr[i].title + "<br>" +
-                            "Participants: " + names + "<br>" +
-                            "Address: " + eventDateArr[i].address + "<br>" +
-                            "Time: " + eventDateArr[i].fullEvenDate + "<br>";
-                    }
-                }
-                result.innerHTML = str;
-            });
-        });
-
-        function readData() {
-            db.collection("events").onSnapshot(function (querySnapshot) {
-                querySnapshot.forEach(function (doc) {
-                    let d = doc.data().time.toDate();
-                    let theYear = d.getFullYear().toString();
-                    let theMonth = parseInt(d.getMonth() + 1).toString();
-                    let theMonthIndex = d.getMonth();
-                    let theDay = d.getDate().toString();
-
-                    eventDateSepArr.push({
-                        year: theYear,
-                        month: theMonth,
-                        monthIndex: theMonthIndex,
-                        day: theDay
-                    });
-
-                    if (theMonth.toString().length == 1) {
-                        theMonth = 0 + theMonth.toString();
-                    }
-
-                    if (theDay.toString().length == 1) {
-                        theDay = 0 + theDay.toString();
-                    }
-
-                    let theEventDate = theYear + "-" + theMonth + "-" + theDay;
-
-                    eventDateArr.push({
-                        eventDate: theEventDate,
-                        fullEvenDate: d.toString(),
-                        names: doc.data().participants,
-                        address: doc.data().address,
-                        title: doc.data().title
-                    });
-                });
-            });
-        }
-        readData();
-
-        function color() {
-            td = document.getElementsByTagName("td");
-            div = document.getElementsByTagName("div");
-
-            for (let i = 0; i < td.length; i++) {
-                td[i].style.color = "black";
-            }
-
-            for (let i = 0; i < td.length; i++) {
-                for (let j = 0; j < eventDateSepArr.length; j++) {
-                    if (td[i].textContent == eventDateSepArr[j].day &&
-                        div[5].textContent.startsWith((month_arr[eventDateSepArr[j].monthIndex]) + " " + eventDateSepArr[j].year)
-                    ) {
-                        td[i].style.color = "red";
-                    }
-                }
-            }
-        }
-        color();
-
-        setInterval(function () {
-            color();
-        }, 1000);
-    </script>
-</body>
-
-<body>
-    <footer class="d-flex footer fixed-bottom navbar-bottom">
-        <a href="index.html" class="footernote">
-            <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
-        </a>
-        <a href="findevent.html" class="footernote">
-            <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
-        </a>
-        <a href="event_creation.html" class="footernote">
-            <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
-        </a>
-        <a href="calendar.html" class="footernote">
-            <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
-        </a>
-    </footer>
 </body>
 
 </html>
