@@ -131,10 +131,6 @@
             //sets id: id for css/data.id for event.id
             eventDiv.setAttribute('id', 'eventDiv');
             eventDiv.setAttribute('data-id', doc.id);
-            //
-            //pulls timestamp from firebase and puts it into a date
-            let datePull = doc.data().date;
-            let disDate = new Date(datePull);
             //give spans content
             name.textContent = doc.data().name;
             address.textContent = doc.data().address;
@@ -171,9 +167,6 @@
             eventDiv.setAttribute('id', 'eventDiv');
             eventDiv.setAttribute('data-id', doc.id);
             //
-            //pulls timestamp from firebase and puts it into a date
-            let datePull = doc.data().date;
-            let disDate = new Date(datePull);
             //give spans content
             name.textContent = doc.data().name;
             address.textContent = doc.data().address;
