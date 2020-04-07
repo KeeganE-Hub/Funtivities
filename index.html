@@ -14,8 +14,6 @@
     <!----------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <script src="bower_components/firebaseui/dist/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="bower_components/firebaseui/dist/firebaseui.css" />
 
     
 
@@ -65,6 +63,11 @@
           </a>
       </footer>
 
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+
+
+
     <!----------------------------------------------->
     <!-- JS: Bootstrap, Firebase, API related    -->
     <!----------------------------------------------->
@@ -85,13 +88,11 @@
     <!--------------------------------------------------------------------->
     <script src="scripts/script.js"></script>
 
+
      <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
 
-    <script>
-      checkLogin();
-    </script>
 
 </body>
 </html>                 

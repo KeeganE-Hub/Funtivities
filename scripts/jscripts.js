@@ -164,6 +164,7 @@ function showEvent(event) {
         }
     )
 }
+
 //takes whitespace separated tags, arrays them and adds them to existing tag array
 function tagEvent(event) {
     document.getElementById("tagButt").addEventListener("click",
@@ -308,9 +309,20 @@ function createProfile() {
 }
 
 //Return user to login page if not logged in.
-function checkLogin() {
-    firebase.auth().inAuthStateChanged(function (user) {
-        if (!user) {
-            window.location.replace("login.html");
-        }
-}
+// function checkLogin() {
+//     console.log("ran0");
+//     firebase.auth().inAuthStateChanged(function (user) {
+//         console.log("ran1");
+//         if (!user) {
+//             window.location.replace("login.html");
+//             console.log("ran2");
+//         };
+//     });
+// }
+// checkLogin();
+
+
+// //List events.
+// function listEvents() {
+
+// }
