@@ -48,34 +48,37 @@
         </div>
     </nav>
     <div class="run center">
-        <div>
-            <h4 id="profileName"></h4>
-            <h5 id="profileAge"></h5>
-            <h6 id="profileBody"></h5>
+        <div id="profBanner">
+            <div>
+                <h4 id="profileName"></h4>
+                <h5 id="profileAge"></h5>
+                <h6 id="profileBody"></h6>
+            </div>
         </div>
         <br>
         <br>
         <div id='profEventButt'></div>
+        <h7 id="whichLabel"></h7>
         <div id="userEventDiv"></div>
         <div id="goingEventDiv"></div>
-        
+
     </div>
 
 
     <footer class="d-flex footer fixed-bottom navbar-bottom">
-        <a href="index.html" class="footernote">
-        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        <a href="main.html" class="footernote">
+            <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
         </a>
         <a href="findevent.html" class="footernote">
-        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+            <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
         </a>
         <a href="event_creation.html" class="footernote">
-        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+            <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
         </a>
         <a href="calendar.html" class="footernote">
-          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
-          </a>
-        </footer>
+            <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+        </a>
+    </footer>
 
 
     <!----------------------------------------------->
@@ -109,10 +112,11 @@
     <script>
         let which = 1;
 
-        function showUserInfo(){
+        function showUserInfo() {
             document.getElementById('goingEventDiv').style.display = 'none';
+            document.getElementById('whichLabel').innerHTML = "Your Events";
             db.collection('users').doc("9sgPtNN4eIVaMdeOtCxi0V8EH5N2").onSnapshot(
-                function (snap){
+                function (snap) {
                     document.getElementById('profileName').innerHTML = snap.data().name;
                     document.getElementById('profileAge').innerHTML = snap.data().age;
                     document.getElementById('profileBody').innerHTML = snap.data().body;
@@ -123,7 +127,7 @@
         //calls the id of the tag on the page things will be posted to
         const userEventsList = document.querySelector('#userEventDiv');
 
-        function makeUserDivs(doc){
+        function makeUserDivs(doc) {
             //makes elements
             let eventDiv = document.createElement('div');
             let name = document.createElement('span');
@@ -151,21 +155,21 @@
             userEventsList.appendChild(eventDiv);
         }
 
-        function showUserEvents(){
+        function showUserEvents() {
             //accesses db in the sub doc under users called userEvents and for every doc()
             //it calls the above 'makeDivs' that displays them
             db.collection('users').doc("9sgPtNN4eIVaMdeOtCxi0V8EH5N2")
-            .collection('userEvents').get().then((snapshot) => {
-                snapshot.docs.forEach(doc => {
-                    makeUserDivs(doc);
+                .collection('userEvents').get().then((snapshot) => {
+                    snapshot.docs.forEach(doc => {
+                        makeUserDivs(doc);
+                    })
                 })
-            })
         }
 
         //calls the id of the tag on the page things will be posted to
         const goingEventsList = document.querySelector('#goingEventDiv');
 
-        function makeGoingDivs(doc){
+        function makeGoingDivs(doc) {
             //makes elements
             let eventDiv = document.createElement('div');
             let name = document.createElement('span');
@@ -193,40 +197,41 @@
             goingEventsList.appendChild(eventDiv);
         }
 
-        function showGoingEvents(){
+        function showGoingEvents() {
             //accesses db in the sub doc under users called userEvents and for every doc()
             //it calls the above 'makeDivs' that displays them
             db.collection('users').doc("9sgPtNN4eIVaMdeOtCxi0V8EH5N2")
-            .collection('goingEvents').get().then((snapshot) => {
-                snapshot.docs.forEach(doc => {
-                    makeGoingDivs(doc);
+                .collection('goingEvents').get().then((snapshot) => {
+                    snapshot.docs.forEach(doc => {
+                        makeGoingDivs(doc);
+                    })
                 })
-            })
         }
 
-        function showButt(){
+        function showButt() {
             document.getElementById('profEventButt').addEventListener('click',
-            function(e){
-                e.preventDefault();
-                which *= -1;
-                show();
-            })
+                function (e) {
+                    e.preventDefault();
+                    which *= -1;
+                    show();
+                })
         }
-        function show(){
-            if (which < 0){
+
+        function show() {
+            if (which < 0) {
                 document.getElementById('userEventDiv').style.display = 'none';
                 document.getElementById('goingEventDiv').style.display = 'block';
+                document.getElementById('whichLabel').innerHTML = "RSVP'd Events"
             } else {
                 document.getElementById('userEventDiv').style.display = 'block';
                 document.getElementById('goingEventDiv').style.display = 'none';
+                document.getElementById('whichLabel').innerHTML = "Your Events";
             }
         }
         showButt();
 
-        showUserEvents();  
-        showGoingEvents(); 
-
-
+        showUserEvents();
+        showGoingEvents();
     </script>
 
 </body>

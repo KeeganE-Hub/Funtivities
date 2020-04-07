@@ -26,6 +26,10 @@ div.run{
 .center{
   margin: auto;
 }
+#profBanner{
+  padding: 2vw;
+  background-color: #b9b8c2;
+}
 #profEventButt{
   background-color: #b5ca8d;
   border: 10px #b9b8c2;
@@ -36,6 +40,7 @@ div.run{
 #eventDiv{
   border: 5px #b9b8c2;
   background-color: #426b69;
+  margin: 1vw;
 }
 span{
 border: #426b69 2px;
