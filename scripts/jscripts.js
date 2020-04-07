@@ -48,6 +48,8 @@
 //lemme know if you find any faults or anything confusing 
 //in my code 
 
+// Code to go to login page if user isn't logged in
+// window.location.replace("url");
 
 
 //made this and the following function "writeEvent" to have modular schemas for future development
@@ -162,6 +164,7 @@ function showEvent(event) {
         }
     )
 }
+
 //takes whitespace separated tags, arrays them and adds them to existing tag array
 function tagEvent(event) {
     document.getElementById("tagButt").addEventListener("click",
@@ -304,3 +307,22 @@ function createProfile() {
 
     })
 }
+
+//Return user to login page if not logged in.
+// function checkLogin() {
+//     console.log("ran0");
+//     firebase.auth().inAuthStateChanged(function (user) {
+//         console.log("ran1");
+//         if (!user) {
+//             window.location.replace("login.html");
+//             console.log("ran2");
+//         };
+//     });
+// }
+// checkLogin();
+
+
+// //List events.
+// function listEvents() {
+
+// }

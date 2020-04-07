@@ -45,16 +45,6 @@
             </div>
         </div>
       </nav>
-    <div class="form-group bg">
-        <label for="formGroupExampleInput2">Filter</label>
-        <input type="text" class="form-control" id="eventAddressForm" placeholder="Filter">
-        <button id="searchButt">Go</button>
-    </div>
-    <div class="run center">
-        <ul id="eventList">
-            
-        </ul>
-    </div>
 
 
     <footer class="d-flex footer fixed-bottom navbar-bottom">
@@ -72,7 +62,65 @@
           </a>
       </footer>
 
+      <div id="eventFind"></div>
 
+      <p id="eventNameText">Test</p>
+
+
+<!-- 
+      <div class="form-group bg">
+        <label for="formGroupExampleInput2">Filter</label>
+        <input type="text" class="form-control" id="eventAddressForm" placeholder="Filter">
+        <button id="searchButt">Go</button>
+    </div>
+    <div class="run center">
+        <ul id="eventList">
+            
+        </ul>
+    </div> -->
+
+    <script>
+    //     function listEvent() {
+    //         db.collection("events").onSnapshot(function (querySnapshot) {
+    //             querySnapshot.forEach(function (doc) {
+    //                 this.div = document.createElement("div");
+    //                 this.div.innerHTML = "Hi";
+    //                 document.getElementById("eventFind").appendChild(this.div);
+    //             }
+    //     }
+    // }
+
+    //     const listSpace = document.querySelector('#eventFind');
+
+    //     function thisEvent(doc){
+    //         //Make elements
+    //         let eventDiv = document.createElement('div');
+    //         let name = document.createElement('span');
+    //         let date = document.createElement('span');
+    //         let address = document.createElement('span');
+    //         eventDiv.setAttribute('id', 'eventDiv');
+    //         eventDiv.setAttribute('data-id', doc.id);
+    //         //Give spans their content about event
+    //         name.textContent = doc.data().name;
+    //         address.textContent = doc.data().address;
+    //         date.textContent = doc.data().time;
+    //         //Add spans to div
+    //         eventDiv.appendChild(name);
+    //         eventDiv.appendChild(date);
+    //         eventDiv.appendChild(address);
+    //         listSpace.appendChild(eventDiv);
+    //     }
+    
+    //     function listEvents() {
+    //         //Access database for events and lists objects.
+    //         console.log("a");
+    //         db.collection("events").onSnapshot(function (querySnapshot) {
+    //             querySnapshot.forEach(function (doc) {
+    //                 thisEvent(doc);
+    //             })
+    //         })
+    //     }
+    // </script>
 
 
 
@@ -109,7 +157,9 @@
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
 
-
+    <script>
+    listEvents();
+    </script>
 </body>
 
 </html>
