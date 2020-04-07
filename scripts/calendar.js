@@ -26,8 +26,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 function readData(id) {
     db.collection("events").onSnapshot(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-            if (id == doc.data().eventId) {
-                let d = doc.data().time.toDate();
+            if (id == doc.data().creatorId) {
+                let d = doc.data().date.toDate();
                 let theYear = d.getFullYear().toString();
                 let theMonth = parseInt(d.getMonth() + 1).toString();
                 let theMonthIndex = d.getMonth();
@@ -51,7 +51,7 @@ function readData(id) {
                 let theEventDate = theYear + "-" + theMonth + "-" + theDay;
 
                 eventDateArr.push({
-                    eventId: doc.data().eventId,
+                    eventId: doc.data().creatorId,
                     tags: doc.data().tag,
                     textBody: doc.data().textBody,
                     eventDate: theEventDate,
@@ -66,7 +66,6 @@ function readData(id) {
 }
 
 function color() {
-
     td = document.getElementsByTagName("td");
     div = document.getElementsByTagName("div");
 
@@ -77,7 +76,7 @@ function color() {
     for (let i = 0; i < td.length; i++) {
         for (let j = 0; j < eventDateSepArr.length; j++) {
             if (td[i].textContent == eventDateSepArr[j].day &&
-                div[5].textContent.startsWith((month_arr[eventDateSepArr[j].monthIndex]) + " " +
+                div[8].textContent.startsWith((month_arr[eventDateSepArr[j].monthIndex]) + " " +
                     eventDateSepArr[j].year)
             ) {
                 td[i].style.color = "red";
@@ -145,7 +144,7 @@ YUI().use('calendar', 'datatype-date', 'cssbutton', function (Y) {
             }
         }
         if (str == "") {
-            str = "No events at that day :(";
+            str = "No events scheduled :(";
         }
         result.innerHTML = str;
     });

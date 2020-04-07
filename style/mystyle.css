@@ -118,6 +118,7 @@ border: 4px #426b69;
 }
 
 #links {
+  display: none;
   position: absolute;
   left: 5%;
   top: 50%;
@@ -126,6 +127,7 @@ border: 4px #426b69;
 #result {
   background-color: antiquewhite;
   position: absolute;
-  left: 50%;
+  text-align: center;
+  left: 37%;
   top: 50%;
 }
