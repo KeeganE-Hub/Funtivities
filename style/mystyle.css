@@ -51,6 +51,10 @@ border: 4px #426b69;
   width: auto;
 }
 
+#eventFind, #eventDiv {
+  border: 2px solid black;
+}
+
 
 .navbar-custom {
   background-color: #ff8C00

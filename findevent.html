@@ -58,8 +58,9 @@
           </a>
       </footer>
 
+    <div class="center run">
       <div id="eventFind"></div>
-
+    </div>
     <script>
 
         const listSpace = document.querySelector('#eventFind');
@@ -75,7 +76,7 @@
             //Give spans their content about event
             name.textContent = doc.data().name;
             address.textContent = doc.data().address;
-            date.textContent = doc.data().date;
+            date.textContent = doc.data().date.toDate();
             //Add spans to div
             eventDiv.appendChild(name);
             eventDiv.appendChild(date);
@@ -85,7 +86,6 @@
     
         function listEvents() {
             //Access database for events and lists objects.
-            console.log("a");
             db.collection("events").onSnapshot(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
                     thisEvent(doc);
