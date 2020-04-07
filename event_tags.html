@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="bower_components/firebaseui/dist/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="bower_components/firebaseui/dist/firebaseui.css" />
 
     <!------------------------>
     <!-- Your own CSS files -->
@@ -39,7 +41,7 @@
           <div class="btn-group dropleft">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
             <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Profile</a>
+                <a href="profile.html" class="dropdown-item">Profile</a>
                 <a href="#" class="dropdown-item">Events List</a>
                 <a href="findtag.html" class="dropdown-item">Tags</a>
             </div>
@@ -61,15 +63,20 @@
     <a href="event_page.html"><button type="button" id="tagButt" class="btn btn-outline-primary float-right mx-4">Next</button></a>
     
 
-
-
-
-
-
-
-
-
-
+    <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="index.html" class="footernote">
+        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        </a>
+        <a href="findevent.html" class="footernote">
+        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+        </a>
+        <a href="calendar.html" class="footernote">
+          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+          </a>
+        </footer>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
