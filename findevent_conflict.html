@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Funtivities - Find Event</title>
+<<<<<<< HEAD
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+=======
+>>>>>>> cfd1e6f0d1514af56975d3c9ff2439c953831428
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    
+
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="style/mystyle.css">
+
+</head>
+<body>
+    <!----------------------->
+    <!--  HTML Section -->
+    <!----------------------->
+    
+
+    <nav class="navbar navbar-custom">
+        <form class="form-inline">
+            <button id="back" class="btn btn-outline-success" type="button" onclick="history.back()">Back</button>
+            <span class="navbar-brand navbar-center" style="text-align:center">Funtivities</span>
+        </form>
+        <div class="btn-group dropleft">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options</button>
+            <div class="dropdown-menu">
+                <a href="profile.html" class="dropdown-item">Profile</a>
+                <a href="calendar.html" class="dropdown-item">Events List</a>
+            </div>
+        </div>
+    </nav>
+
+<<<<<<< HEAD
+
+    <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="main.html" class="footernote">
+            <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        </a>
+        <a href="findevent.html" class="footernote">
+            <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+            <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+        </a>
+        <a href="calendar.html" class="footernote">
+            <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+        </a>
+    </footer>
+
+    <div class="form-group bg">
+        <label for="formGroupExampleInput2">Filter</label>
+        <input type="text" class="form-control" id="eventFilter" placeholder="Filter">
+        <button id="searchButt">Go</button>
+    </div>
+    <div class="run center">
+        <div id="eventDiv"></div>
+
+    </div>
+
+    <script>
+        const userEventsList = document.querySelector('#eventDiv');
+
+        function makeEventDivs(doc) {
+            //makes elements
+            let eventDiv = document.createElement('div');
+            let name = document.createElement('span');
+            let date = document.createElement('span');
+            let time = document.createElement('span');
+            let address = document.createElement('span');
+            //sets id: id for css/data.id for event.id
+            eventDiv.setAttribute('id', 'eventDiv');
+            eventDiv.setAttribute('data-id', doc.id);
+            //
+            //pulls timestamp from firebase and puts it into a date
+            let datePull = doc.data().date;
+            let disDate = new Date(datePull);
+            //give spans content
+            name.textContent = doc.data().name;
+            address.textContent = doc.data().address;
+            date.textContent = disDate.getDate();
+            time.textContent = disDate.getTime();
+            //put spans on div
+            eventDiv.appendChild(name);
+            eventDiv.appendChild(date);
+            eventDiv.appendChild(time);
+            eventDiv.appendChild(address);
+            //put div on page div
+            userEventsList.appendChild(eventDiv);
+        }
+
+        function showEvents() {
+            document.getElementById('searchButt').addEventListener('click',
+                function (e) {
+                    e.preventDefault();
+                    let userTag = document.getElementById('eventFilter').value;
+                    //accesses db in the sub doc under users called userEvents and for every doc()
+                    //it calls the above 'makeDivs' that displays them
+                    db.collection('users').doc("9sgPtNN4eIVaMdeOtCxi0V8EH5N2")
+                        .collection('userEvents').where(userTag, 'in', 'tag').get().then((snapshot) => {
+                            snapshot.docs.forEach(doc => {
+                                makeEventDivs(doc);
+                            })
+                        })
+                })
+
+        }
+        showEvents();
+    </script>
+
+
+    <script>
+        //     function listEvent() {
+        //         db.collection("events").onSnapshot(function (querySnapshot) {
+        //             querySnapshot.forEach(function (doc) {
+        //                 this.div = document.createElement("div");
+        //                 this.div.innerHTML = "Hi";
+        //                 document.getElementById("eventFind").appendChild(this.div);
+        //             }
+        //     }
+        // }
+
+        //     const listSpace = document.querySelector('#eventFind');
+
+        //     function thisEvent(doc){
+        //         //Make elements
+        //         let eventDiv = document.createElement('div');
+        //         let name = document.createElement('span');
+        //         let date = document.createElement('span');
+        //         let address = document.createElement('span');
+        //         eventDiv.setAttribute('id', 'eventDiv');
+        //         eventDiv.setAttribute('data-id', doc.id);
+        //         //Give spans their content about event
+        //         name.textContent = doc.data().name;
+        //         address.textContent = doc.data().address;
+        //         date.textContent = doc.data().time;
+        //         //Add spans to div
+        //         eventDiv.appendChild(name);
+        //         eventDiv.appendChild(date);
+        //         eventDiv.appendChild(address);
+        //         listSpace.appendChild(eventDiv);
+        //     }
+
+        //     function listEvents() {
+        //         //Access database for events and lists objects.
+        //         console.log("a");
+        //         db.collection("events").onSnapshot(function (querySnapshot) {
+        //             querySnapshot.forEach(function (doc) {
+        //                 thisEvent(doc);
+        //             })
+        //         })
+        //     }
+        // 
+=======
+      <footer class="d-flex footer fixed-bottom navbar-bottom">
+        <a href="index.html" class="footernote">
+        <div class="container-fluid"><img src="images/home.png" class="icons" alt="Home"> </div>
+        </a>
+        <a href="findevent.html" class="footernote">
+        <div class="container-fluid"><img src="images/search.png" class="icons" alt="Search Event"></div>
+        </a>
+        <a href="event_creation.html" class="footernote">
+        <div class="container-fluid"><img src="images/event.png" class="icons" alt="Make Event"></div>
+        </a>
+        <a href="calendar.html" class="footernote">
+          <div class="container-fluid"><img src="images/calendar.png" class="icons" alt="Calendar"></div>
+          </a>
+      </footer>
+
+    <div class="center run">
+      <div id="eventFind"></div>
+    </div>
+    <script>
+
+        const listSpace = document.querySelector('#eventFind');
+
+        function thisEvent(doc){
+            //Make elements
+            let eventDiv = document.createElement('div');
+            let name = document.createElement('span');
+            let date = document.createElement('span');
+            let address = document.createElement('span');
+            eventDiv.setAttribute('id', 'eventDiv');
+            eventDiv.setAttribute('data-id', doc.id);
+            //Give spans their content about event
+            name.textContent = doc.data().name;
+            address.textContent = doc.data().address;
+            date.textContent = doc.data().date.toDate();
+            //Add spans to div
+            eventDiv.appendChild(name);
+            eventDiv.appendChild(date);
+            eventDiv.appendChild(address);
+            listSpace.appendChild(eventDiv);
+        }
+    
+        function listEvents() {
+            //Access database for events and lists objects.
+            db.collection("events").onSnapshot(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    thisEvent(doc);
+                })
+            })
+        }
+>>>>>>> cfd1e6f0d1514af56975d3c9ff2439c953831428
+    </script>
+
+
+
+
+
+
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="scripts/firebase_api.js"> </script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="scripts/jscripts.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- Make calls to your own JavaScript functions, here below-->
+    <!---------------------------------------------------------------------->
+
+    <script>
+        //listEvents();
+    </script>
+</body>
+
+</html>
