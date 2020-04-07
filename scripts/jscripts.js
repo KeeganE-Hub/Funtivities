@@ -113,6 +113,7 @@ function addEvent() {
                             date: fbDate,
                             address: eventAddr,
                             textBody: eventTxtBdy,
+                            creatorId: user.uid,
                             going: going,
                             tag: tag
                         })
@@ -123,7 +124,25 @@ function addEvent() {
                             console.error("Error writing document: ", error);
                         });
 
-                    
+
+                    const uref = db.collection('users').doc(user.uid).collection('userEvents').doc();
+                    uref.set({
+                            name: eventName,
+                            date: fbDate,
+                            address: eventAddr,
+                            textBody: eventTxtBdy,
+                            creatorId: user.uid,
+                            going: going,
+                            tag: tag
+                        })
+                        .then(function () {
+                            console.log("Document successfully written!");
+                        })
+                        .catch(function (error) {
+                            console.error("Error writing document: ", error);
+                        });
+
+
                     tagEvent(ref);
                 } else {
                     // No user is signed in.
