@@ -1,4 +1,8 @@
 
+const listSpace = document.querySelector('#eventFind');
+
+
+
 //made this and the following function "writeEvent" to have modular schemas for future development
 function setEvent(eventName, eventDate, eventTime, eventAddr, eventTxtBdy) {
     // 
@@ -256,5 +260,40 @@ function createProfile() {
 
         })
 
+    })
+}
+
+//Makes the elements in find-event to list the events going on
+//Reads data from database to fill elements
+function thisEvent(doc){
+    //Make elements
+    let eventDiv = document.createElement('div');
+    let name = document.createElement('span');
+    let date = document.createElement('span');
+    let address = document.createElement('span');
+    let signup = document.createElement('button');
+    signup.setAttribute('id', 'signup');
+    signup.innerHTML="Sign up";
+    eventDiv.setAttribute('id', 'eventDiv');
+    eventDiv.setAttribute('data-id', doc.id);
+    //Give spans their content about event
+    name.textContent = doc.data().name;
+    address.textContent = doc.data().address;
+    date.textContent = doc.data().date.toDate();
+    //Add spans to div
+    eventDiv.appendChild(name);
+    eventDiv.appendChild(date);
+    eventDiv.appendChild(address);
+    // eventDiv.appendChild(signup);
+    listSpace.appendChild(eventDiv);
+}
+
+//Lists events, per event in database.
+function listEvents() {
+    //Access database for events and lists objects.
+    db.collection("events").onSnapshot(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+            thisEvent(doc);
+        })
     })
 }
