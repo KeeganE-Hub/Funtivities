@@ -2,29 +2,16 @@ body {
     background-color: #b9b8c2;
   }
   /* Color scheme: Oranges. */
-div.tb1 {
-  background-color: #db7c26;
-  text-align: center;
-  border: 10px #b5ca8d;
-  text-decoration-color: #426b69;
-}
-div.tb2 {
-  background-color: #db7c26;
-  text-align: center;
-  border: 10px #b5ca8d;
-  text-decoration-color: #426b69;
-}
+
 div.run{
   background-color: #e49f61;
   text-align: center;
   width:95vw;
   z-index: 1;
   padding: 10vw;
-
-}
-.center{
   margin: auto;
 }
+
 
 #logo {
   height: 40vh;

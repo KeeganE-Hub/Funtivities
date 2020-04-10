@@ -1,56 +1,3 @@
-//DATE::03/29
-//I have edited and tested my event creation and tagging functions
-//I have I made an events collection and made it so that the doc.id 
-//stores in the event object along with the creators id.
-//I would like to add a proper timestamp to the event obj, will do later.
-//am part way finished an rsvp function for adding yourself to an event
-//tomorrow ill mod my event stream so its quereyable and build the 
-//search/browse page skeleton
-//i have been watching firestore tuts and they recommend having parallell
-//doubles of docs to allow for quicker access. no normalization
-//I was planning on having the "user" docs contain a collection of events
-//created by that person to allow for easy access on that users profile
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-//DATE::whenever I wrote it.
-
-//the database pathways have not been set for any of these functions
-//we neeed to decide how we want to organize our events and users
-
-//I was thiking we could either:
-
-//1 - have a general event pool in one collection with the 
-//creators' userid as property of the event object
-//a guests property fould contain an array of "guests"
-//containing the guests userids
-//another collection would have the profile objects 
-//contining their properties
-//a sub collection under the prof objs would contain
-//clones of events tht user created
-//this would aid in displaying that users events
-//alternately we could use eventids as prof obj properties
-//to reference the event for recall
-
-//2 - only have the events as a sub collection and use a 
-//more complicated ref call to access the event info
-//calling parallel properties from different docs can be 
-//done by using a .forEvery()
-//this would save on space
-
-//i was also thinking we should cut down on non essential 
-//functions for now until the core of the app is complete
-//the due date is in 2 weeks and we also have alot on our 
-//plate as is
-
-//hope you guys arent too stir crazy
-//lemme know if you find any faults or anything confusing 
-//in my code 
-
-// Code to go to login page if user isn't logged in
-// window.location.replace("url");
-
 
 //made this and the following function "writeEvent" to have modular schemas for future development
 function setEvent(eventName, eventDate, eventTime, eventAddr, eventTxtBdy) {
@@ -236,8 +183,6 @@ function pullEventStream() {
 
 
 
-/////////////////////////////////////////////////////////
-
 //rsvp function
 function rsvp() {
     document.getElementById('rsvp').addEventListener('click', function (e) {
@@ -313,22 +258,3 @@ function createProfile() {
 
     })
 }
-
-//Return user to login page if not logged in.
-// function checkLogin() {
-//     console.log("ran0");
-//     firebase.auth().inAuthStateChanged(function (user) {
-//         console.log("ran1");
-//         if (!user) {
-//             window.location.replace("login.html");
-//             console.log("ran2");
-//         };
-//     });
-// }
-// checkLogin();
-
-
-// //List events.
-// function listEvents() {
-
-// }
