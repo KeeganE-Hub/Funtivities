@@ -117,8 +117,8 @@
                     db.collection('users').doc(user.uid).onSnapshot(
                         function (snap) {
                             document.getElementById('profileName').innerHTML = snap.data().name;
-                            document.getElementById('profileAge').innerHTML = snap.data().age;
-                            document.getElementById('profileBody').innerHTML = snap.data().body;
+                            // document.getElementById('profileAge').innerHTML = snap.data().age;
+                            // document.getElementById('profileBody').innerHTML = snap.data().body;
                         }
                     )
                 } else {
