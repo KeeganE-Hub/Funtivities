@@ -1,4 +1,4 @@
-Funtivities
+﻿Funtivities
 
 
 - General Info
@@ -55,6 +55,8 @@ Content of the project folder:
 				 (separate js file because of using a unique library compare to other pages
     /firebase_api.js           # This is where all the core functions of firebase are located	
     /scripts.js                # This is where all the core functions are located
+    /profile.js		       # This holds the functionality for the profile page.
+				 (separate js file due to how large it is
   ├── styles                   # Folder for styles
     /myStyle.css               # All the styling of the app
 
