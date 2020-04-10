@@ -40,8 +40,8 @@ Content of the project folder:
   ├── 404.html                 # File for error
   ├── index.html               # landing HTML file, this is what users see when you come to url
   ├── main.html                # after logged in, this the main menu
-  ├── findevent.html           # page to check out all the events
-  ├── event_creation.html      # page to create a new event
+  ├── find-event.html          # page to check out all the events
+  ├── event-creation.html      # page to create a new event
   ├── calendar.html            # page to check out your calendar which show the events that you created
   ├── profile.html             # page to check your name and all the events whether they user created them or not
   └── README.txt
